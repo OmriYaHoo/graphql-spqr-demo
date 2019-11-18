@@ -1,0 +1,15 @@
+server.port=9001
+
+## default connection pool
+spring.datasource.hikari.connectionTimeout=20000
+spring.datasource.hikari.maximumPoolSize=5
+
+## PostgreSQL
+spring.datasource.url=jdbc:postgresql://localhost:54321/graphql-demo
+spring.datasource.username=omri
+spring.datasource.password=omri
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.show-sql=false
+
+#drop n create a table again, good for testing, comment this in production
+spring.jpa.hibernate.ddl-auto=create-drop
