@@ -22,6 +22,10 @@ public class Talk extends Base {
     @Column
     private String subject;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "PARTICIPANTS_TALKS ",
+            joinColumns = @JoinColumn(name = "talk_id"),
+            inverseJoinColumns = @JoinColumn(name = "participant_id"))
     private List<Participant> participants;
 }

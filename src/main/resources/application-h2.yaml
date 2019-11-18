@@ -1,0 +1,23 @@
+## default connection pool
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    #    hikari:
+    #      connectionTimeout: 20000
+    #      maximum-pool-size: 5
+    ## H2 DB
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  h2:
+    console:
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    #drop n create a table again, good for testing, comment this in production
+    hibernate:
+      ddl-auto: create-drop

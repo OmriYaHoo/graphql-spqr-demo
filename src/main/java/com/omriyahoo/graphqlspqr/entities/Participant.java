@@ -16,8 +16,12 @@ import java.util.List;
 @Table(name = "participants")
 public class Participant extends Base {
 
-    @ManyToOne
-    private Talk talk;
+    @ManyToMany
+    @JoinTable(
+            name = "PARTICIPANTS_TALKS ",
+            joinColumns = @JoinColumn(name = "participant_id"),
+            inverseJoinColumns = @JoinColumn(name = "talk_id"))
+    private List<Talk> talks;
 
     @Column
     private String name;

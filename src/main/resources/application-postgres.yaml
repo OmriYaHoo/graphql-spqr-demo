@@ -1,0 +1,16 @@
+## default connection pool
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximum-pool-size: 5
+    ## PostgreSQL
+    url: jdbc:postgresql://localhost:54321/graphql-demo
+    username: omri
+    password: omri
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    #drop n create a table again, good for testing, comment this in production
+    hibernate:
+      ddl-auto: create

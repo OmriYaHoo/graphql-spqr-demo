@@ -3,8 +3,9 @@ package com.omriyahoo.graphqlspqr.entities;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Data
@@ -18,8 +19,5 @@ public class Speaker extends Base {
 
     @Column
     private String name;
-
-    @OneToMany
-    private List<Talk> talk;
 
 }
