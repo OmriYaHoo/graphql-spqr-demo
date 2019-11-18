@@ -1,7 +1,12 @@
 package com.omriyahoo.graphqlspqr.services;
 
-import com.omriyahoo.graphqlspqr.entities.Talk;
-import com.omriyahoo.graphqlspqr.repos.TalkRepository;
+import com.omriyahoo.graphqlspqr.entities.Participant;
+import com.omriyahoo.graphqlspqr.repos.ParticipantRepository;
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLMutation;
+import io.leangen.graphql.annotations.GraphQLNonNull;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,28 +14,33 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@GraphQLApi
 @Transactional
-public class TalkService {
+public class ParticipantService {
 
-    private final TalkRepository talkRepository;
+    private final ParticipantRepository participantRepository;
 
-    public TalkService(TalkRepository talkRepository) {
-        this.talkRepository = talkRepository;
+    public ParticipantService(ParticipantRepository participantRepository) {
+        this.participantRepository = participantRepository;
     }
 
-    public List<Talk> getTalks() {
-        return talkRepository.findAll();
+    @GraphQLQuery(description = "Get all Participants")
+    public List<Participant> getParticipants() {
+        return participantRepository.findAll();
     }
 
-    public Optional<Talk> getTalkById(Long id) {
-        return talkRepository.findById(id);
+    @GraphQLQuery(description = "Get a Participant by ID")
+    public Optional<Participant> getParticipantById(@GraphQLArgument(name = "ParticipantId", description = "Participant ID to find") @GraphQLNonNull Long id) {
+        return participantRepository.findById(id);
     }
 
-    public Talk saveTalk(Talk talk) {
-        return talkRepository.save(talk);
+    @GraphQLMutation(description = "Create new Participant")
+    public Participant saveParticipant(@GraphQLArgument(name = "Participant", description = "Participant Entity to save\\update") @GraphQLNonNull Participant participant) {
+        return participantRepository.save(participant);
     }
 
-    public void deleteTalks(Long id) {
-        talkRepository.deleteById(id);
+    @GraphQLMutation(description = "Delete a participant by ID")
+    public void deleteParticipantById(@GraphQLArgument(name = "ParticipantId", description = "Participant to remove by ID") @GraphQLNonNull Long id) {
+        participantRepository.deleteById(id);
     }
 }
