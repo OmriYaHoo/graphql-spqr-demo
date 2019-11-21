@@ -2,9 +2,6 @@
 spring:
   datasource:
     driverClassName: org.h2.Driver
-    #    hikari:
-    #      connectionTimeout: 20000
-    #      maximum-pool-size: 5
     ## H2 DB
     url: jdbc:h2:mem:testdb
     username: sa
