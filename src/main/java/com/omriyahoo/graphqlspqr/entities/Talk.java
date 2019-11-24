@@ -1,5 +1,6 @@
 package com.omriyahoo.graphqlspqr.entities;
 
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -17,9 +18,11 @@ import java.util.List;
 public class Talk extends Base {
 
     @OneToOne
+    @GraphQLQuery(name = "speaker", description = "The Talk's Speaker")
     private Speaker speaker;
 
     @Column
+    @GraphQLQuery(name = "subject", description = "The Talk's Subject")
     private String subject;
 
     @ManyToMany
@@ -27,5 +30,6 @@ public class Talk extends Base {
             name = "PARTICIPANTS_TALKS ",
             joinColumns = @JoinColumn(name = "talk_id"),
             inverseJoinColumns = @JoinColumn(name = "participant_id"))
+    @GraphQLQuery(name = "participants", description = "The Talk's Participants")
     private List<Participant> participants;
 }

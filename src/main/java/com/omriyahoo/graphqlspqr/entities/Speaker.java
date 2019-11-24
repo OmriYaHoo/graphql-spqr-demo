@@ -1,5 +1,6 @@
 package com.omriyahoo.graphqlspqr.entities;
 
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 public class Speaker extends Base {
 
     @Column
+    @GraphQLQuery(name = "name", description = "Speaker Name")
     private String name;
 
 }

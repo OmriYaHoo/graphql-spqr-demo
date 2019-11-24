@@ -1,6 +1,7 @@
 package com.omriyahoo.graphqlspqr.entities;
 
 
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,16 +22,19 @@ public abstract class Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @GraphQLQuery(name = "id", description = "Entity ID")
     private Long id;
 
     @Column
     @CreatedDate
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @GraphQLQuery(name = "createdDate", description = "Entity Creation Date")
     private Date createdDate;
 
     @Column
     @LastModifiedDate
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @GraphQLQuery(name = "lastModifiedDate", description = "Entity Last Modification Date")
     private Date lastModifiedDate;
 
     @PrePersist
