@@ -8,6 +8,7 @@ spring:
     url: jdbc:postgresql://localhost:54321/graphql-demo
     username: omri
     password: omri
+    initialization-mode: always
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false

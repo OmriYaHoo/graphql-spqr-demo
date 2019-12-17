@@ -21,7 +21,6 @@ import java.util.Date;
 public abstract class Base {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @GraphQLQuery(name = "id", description = "Entity ID")
     private Long id;
 

@@ -1,6 +1,8 @@
 package com.omriyahoo.graphqlspqr.services;
 
+import com.omriyahoo.graphqlspqr.entities.Speaker;
 import com.omriyahoo.graphqlspqr.entities.Talk;
+import com.omriyahoo.graphqlspqr.repos.SpeakerRepository;
 import com.omriyahoo.graphqlspqr.repos.TalkRepository;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLMutation;
@@ -19,9 +21,11 @@ import java.util.Optional;
 public class TalkService {
 
     private final TalkRepository talkRepository;
+    private final SpeakerRepository speakerRepository;
 
-    public TalkService(TalkRepository talkRepository) {
+    public TalkService(TalkRepository talkRepository, SpeakerRepository speakerRepository) {
         this.talkRepository = talkRepository;
+        this.speakerRepository = speakerRepository;
     }
 
     @GraphQLQuery(description = "Get all Talks")
@@ -36,6 +40,8 @@ public class TalkService {
 
     @GraphQLMutation(description = "Create new Talk")
     public Talk saveTalk(@GraphQLArgument(name = "Talk", description = "Talk Entity to save\\update") @GraphQLNonNull Talk talk) {
+        Optional<Speaker> optionalSpeaker = speakerRepository.findById(talk.getSpeaker().getId());
+        talk.setSpeaker(optionalSpeaker.orElseThrow(() -> new RuntimeException("Error getting speaker by ID")));
         return talkRepository.save(talk);
     }
 
