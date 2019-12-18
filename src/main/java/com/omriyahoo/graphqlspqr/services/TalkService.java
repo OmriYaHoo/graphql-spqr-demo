@@ -4,10 +4,7 @@ import com.omriyahoo.graphqlspqr.entities.Speaker;
 import com.omriyahoo.graphqlspqr.entities.Talk;
 import com.omriyahoo.graphqlspqr.repos.SpeakerRepository;
 import com.omriyahoo.graphqlspqr.repos.TalkRepository;
-import io.leangen.graphql.annotations.GraphQLArgument;
-import io.leangen.graphql.annotations.GraphQLMutation;
-import io.leangen.graphql.annotations.GraphQLNonNull;
-import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.annotations.*;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +19,12 @@ public class TalkService {
 
     private final TalkRepository talkRepository;
     private final SpeakerRepository speakerRepository;
+    private final GiphyService giphyService;
 
-    public TalkService(TalkRepository talkRepository, SpeakerRepository speakerRepository) {
+    public TalkService(TalkRepository talkRepository, SpeakerRepository speakerRepository, GiphyService giphyService) {
         this.talkRepository = talkRepository;
         this.speakerRepository = speakerRepository;
+        this.giphyService = giphyService;
     }
 
     @GraphQLQuery(description = "Get all Talks")
@@ -49,4 +48,10 @@ public class TalkService {
     public void deleteTalkById(@GraphQLArgument(name = "TalkId", description = "Talk to remove by ID") @GraphQLNonNull Long id) {
         talkRepository.deleteById(id);
     }
+
+    @GraphQLQuery
+    public String getGiphyUrl(@GraphQLContext Talk talk) {
+        return giphyService.getGiphyUrl(talk.getSubject());
+    }
+
 }
