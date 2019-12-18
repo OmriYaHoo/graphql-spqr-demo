@@ -27,9 +27,9 @@ public class Talk extends Base {
 
     @ManyToMany
     @JoinTable(
-            name = "PARTICIPANTS_TALKS ",
+            name = "ATTENDEES_TALKS ",
             joinColumns = @JoinColumn(name = "talk_id"),
-            inverseJoinColumns = @JoinColumn(name = "participant_id"))
-    @GraphQLQuery(name = "participants", description = "The Talk's Participants")
-    private List<Participant> participants;
+            inverseJoinColumns = @JoinColumn(name = "attendee_id"))
+    @GraphQLQuery(name = "attendees", description = "The Talk's Attendees")
+    private List<Attendee> attendees;
 }

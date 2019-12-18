@@ -1,9 +1,9 @@
 package com.omriyahoo.graphqlspqr.repos;
 
-import com.omriyahoo.graphqlspqr.entities.Participant;
+import com.omriyahoo.graphqlspqr.entities.Attendee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ParticipantRepository extends JpaRepository<Participant, Long> {
+public interface AttendeeRepository extends JpaRepository<Attendee, Long> {
 }

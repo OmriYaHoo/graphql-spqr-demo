@@ -14,18 +14,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Table(name = "participants")
-public class Participant extends Base {
+@Table(name = "attendees")
+public class Attendee extends Base {
 
     @ManyToMany
     @JoinTable(
-            name = "PARTICIPANTS_TALKS ",
-            joinColumns = @JoinColumn(name = "participant_id"),
+            name = "ATTENDEES_TALKS ",
+            joinColumns = @JoinColumn(name = "attendee_id"),
             inverseJoinColumns = @JoinColumn(name = "talk_id"))
-    @GraphQLQuery(name = "talks", description = "Talks this participant is participating")
+    @GraphQLQuery(name = "talks", description = "Talks this attendee is participating")
     private List<Talk> talks;
 
     @Column
-    @GraphQLQuery(name = "name", description = "Participant Name")
+    @GraphQLQuery(name = "name", description = "Attendee Name")
     private String name;
 }
