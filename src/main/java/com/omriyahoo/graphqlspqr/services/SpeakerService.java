@@ -24,17 +24,17 @@ public class SpeakerService {
         this.speakerRepository = speakerRepository;
     }
 
-    @GraphQLQuery(description = "Get all Speakers")
+    @GraphQLQuery(description = "Get all speakers")
     public List<Speaker> getSpeakers() {
         return speakerRepository.findAll();
     }
 
-    @GraphQLQuery(description = "Get a Speaker by ID")
+    @GraphQLQuery(description = "Get a speaker by ID")
     public Optional<Speaker> getSpeakerById(@GraphQLArgument(name = "SpeakerId", description = "Speaker ID to find") @GraphQLNonNull Long id) {
         return speakerRepository.findById(id);
     }
 
-    @GraphQLMutation(description = "Create new Speaker")
+    @GraphQLMutation(description = "Create new speaker")
     public Speaker saveSpeaker(@GraphQLArgument(name = "Speaker", description = "Speaker Entity to save\\update") @GraphQLNonNull Speaker speaker) {
         return speakerRepository.save(speaker);
     }

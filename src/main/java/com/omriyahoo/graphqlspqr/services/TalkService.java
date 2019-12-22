@@ -27,9 +27,14 @@ public class TalkService {
         this.giphyService = giphyService;
     }
 
-    @GraphQLQuery(description = "Get all Talks")
+    @GraphQLQuery(name = "getAllTalks", description = "Get all Talks")
     public List<Talk> getTalks() {
         return talkRepository.findAll();
+    }
+
+    @GraphQLQuery(name = "countTalks", description = "Get all Talks")
+    public Long sizeTalks() {
+        return talkRepository.count();
     }
 
     @GraphQLQuery(description = "Get a Talk by ID")

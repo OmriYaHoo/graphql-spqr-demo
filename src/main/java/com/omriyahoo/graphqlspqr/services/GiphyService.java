@@ -39,7 +39,7 @@ public class GiphyService {
             JsonObject images = ((JsonObject) data.get(0)).getAsJsonObject("images");
             JsonObject original = images.getAsJsonObject("original");
             return String.valueOf(original.getAsJsonPrimitive("url"));
-        } catch (Throwable e) {
+        } catch (Exception e) {
             log.error("error getting giphy url", e);
             return errorGif;
         }
