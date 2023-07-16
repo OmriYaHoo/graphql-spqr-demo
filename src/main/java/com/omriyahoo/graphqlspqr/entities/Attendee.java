@@ -1,10 +1,10 @@
 package com.omriyahoo.graphqlspqr.entities;
 
 import io.leangen.graphql.annotations.GraphQLQuery;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -25,7 +25,6 @@ public class Attendee extends Base {
     @GraphQLQuery(name = "talks", description = "Talks this attendee is participating")
     private List<Talk> talks;
 
-    @Column
     @GraphQLQuery(name = "name", description = "Attendee Name")
     private String name;
 }

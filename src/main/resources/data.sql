@@ -1,11 +1,11 @@
-insert into PUBLIC.speakers (ID, CREATED_DATE, LAST_MODIFIED_DATE, NAME)
+insert into speakers (ID, CREATED_DATE, LAST_MODIFIED_DATE, NAME)
 values (1, now(), now(), 'Omri'),
        (2, now(), now(), 'Oded'),
        (3, now(), now(), 'Alon'),
        (4, now(), now(), 'David')
 ;
 
-insert into PUBLIC.talks (ID, CREATED_DATE, LAST_MODIFIED_DATE, SUBJECT, SPEAKER_ID)
+insert into talks (ID, CREATED_DATE, LAST_MODIFIED_DATE, SUBJECT, SPEAKER_ID)
 values (1, now(), now(), 'Maven', 2),
        (2, now(), now(), 'Logging Stack', 4),
        (3, now(), now(), 'Clean Code', 3),

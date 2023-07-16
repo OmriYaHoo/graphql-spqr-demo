@@ -6,9 +6,9 @@ import com.omriyahoo.graphqlspqr.repos.SpeakerRepository;
 import com.omriyahoo.graphqlspqr.repos.TalkRepository;
 import io.leangen.graphql.annotations.*;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
