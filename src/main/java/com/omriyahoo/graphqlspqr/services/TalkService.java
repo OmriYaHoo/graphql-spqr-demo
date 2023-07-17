@@ -56,7 +56,7 @@ public class TalkService {
 
     @GraphQLQuery
     public String getGiphyUrl(@GraphQLContext Talk talk) {
-        return giphyService.getGiphyUrl(talk.getSubject());
+        return giphyService.getGiphyUrlBySubject(talk.getSubject());
     }
 
 }
