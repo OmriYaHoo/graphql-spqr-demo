@@ -31,4 +31,12 @@ public class Talk extends Base {
             inverseJoinColumns = @JoinColumn(name = "attendee_id"))
     @GraphQLQuery(name = "attendees", description = "The Talk's Attendees")
     private List<Attendee> attendees;
+
+    @Transient
+    private Integer numberOfAttendees;
+
+    public Integer getNumberOfAttendees() {
+        return attendees.size();
+    }
+
 }

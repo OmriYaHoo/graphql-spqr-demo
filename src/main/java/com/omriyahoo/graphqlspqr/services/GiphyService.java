@@ -99,7 +99,7 @@ public class GiphyService {
     public String getGiphyUrlBySubject(String subject) {
         Gson gson = new Gson();
         String giphyBaseUrl = "http://api.giphy.com/v1/gifs/search?q=";
-        String giphyUrl = giphyBaseUrl + subject + apiKey;
+        String giphyUrl = giphyBaseUrl + subject + "&api_key=" + apiKey;
         String errorGif = "https://media.giphy.com/media/1RkDDoIVs3ntm/giphy.gif";
         try {
             URI uri = UriComponentsBuilder.fromUriString(giphyUrl).build().encode().toUri();
