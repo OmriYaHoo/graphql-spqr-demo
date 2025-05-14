@@ -109,6 +109,7 @@ public class GiphyService {
                     HttpMethod.GET,
                     new HttpEntity<>(mvm, null),
                     String.class);
+            log.info("Response from Giphy with subject: {}", subject);
             JsonObject json = gson.fromJson(String.valueOf(res.getBody()), JsonObject.class);
             JsonArray data = json.getAsJsonArray("data");
             if (data == null || data.size() == 0) {
