@@ -3,7 +3,6 @@ package com.omriyahoo.graphqlspqr.controllers;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.SchemaPrinter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -13,7 +12,6 @@ public class GraphQLSchemaController {
 
     private final GraphQL graphQL;
 
-    @Autowired
     public GraphQLSchemaController(GraphQL graphQL) {
         this.graphQL = graphQL;
     }
